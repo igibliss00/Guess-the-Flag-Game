@@ -2,7 +2,7 @@
 
 A simple game that presents three national flags and have the user guess which country the flag belongs to.  
 
-![example] (https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/2.png)
+![example](https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/2.png)
 
 ## Installing
 
@@ -23,7 +23,7 @@ In order to make the design look the same for both non-Retina devices and Retina
 ### Auto Layout
 This project incorporates the auto layout feature that enables the design to look identical in devices of different screen sizes.  Auto layout requires at least one vertical constraint and one horizontal constraint to work.  First of the three buttons in this project had the "Top Space to Safe Area" set for the vertical constraint as well as the "Center Horizontally in Safe Area" for the horizontal constraint.  The rest two buttons had their vertical constraint set against the button right above to themselves. 
 
-![auto layout] (https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/1.png)
+![auto layout](https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/1.png)
 
 ### UIColor
 CA Layer is Apple’s Core Animation data type that manages how the app looks.  This is at a lower technical layer than UIView, a type that is a parent to things like UIButton, UITableView, etc.  In order to manipulate the border width and the color of UIButton we need to communicate to this CA Layer, more specifically the CGColor.  The problem is that CGColor doesn’t know UIButton since CGColor sits at a technical lower level than UIButton. That’s where UIColor comes in.  UIColor is able to convert to and from CGColor easily.
@@ -37,6 +37,6 @@ button3.layer.borderColor = UIColor.lightGray.cgColor
 ### UIAlertController
 UIAlertController is a modal that can display messages and allows users to interact with by pressing buttons.  The buttons will execute a closure function provided by the developer. This projects uses the UIAlertController to display whether the user has gotten the answer right or not, the score, and execute a closure function "askQuestions". 
 
-![UIAlertController] (https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/3.png)
+![UIAlertController](https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/3.png)
 
 
