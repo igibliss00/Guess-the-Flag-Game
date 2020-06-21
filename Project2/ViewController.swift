@@ -12,10 +12,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var scoreDisplay: UILabel!
+    @IBOutlet weak var level: UILabel!
     
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var numOfQuestionsAsked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +54,25 @@ class ViewController: UIViewController {
             title = "Wrong!"
             score -= 1
         }
+        scoreDisplay.text = String(score)
+        numOfQuestionsAsked += 1
+        level.text = String(numOfQuestionsAsked)
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
-        
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
-        
+        let ac: UIAlertController
+        if numOfQuestionsAsked == 10 {
+            ac = UIAlertController(title: title, message: "Your final score is \(score)", preferredStyle: .alert)
+            
+            score = 0
+            numOfQuestionsAsked = 0
+            
+            ac.addAction(UIAlertAction(title: "Restart", style: .default, handler: askQuestions))
+        } else {
+            ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+            
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
+        }
         present(ac, animated: true)
+
     }
 }
 
