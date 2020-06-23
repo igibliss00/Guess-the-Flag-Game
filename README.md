@@ -38,7 +38,7 @@ In order to fix this, three more constraints are addded
 
 - We want all three buttons to have the same height as well as the same aspect ratio.  By Control + dragging the bottom button to the middle button, and the middle button to the top button, we can set "Equal Heights".  And then by Control + dragging onto themselves, you can set the "Aspect Ratio". 
 
-<img src="https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/5.png" width="400">
+<img src="https://github.com/igibliss00/Guess-the-Flag-Game/blob/master/README_assets/5.png" height="400">
 
 ### UIColor
 CA Layer is Apple’s Core Animation data type that manages how the app looks.  This is at a lower technical layer than UIView, a type that is a parent to things like UIButton, UITableView, etc.  In order to manipulate the border width and the color of UIButton we need to communicate to this CA Layer, more specifically the CGColor.  The problem is that CGColor doesn’t know UIButton since CGColor sits at a technical lower level than UIButton. That’s where UIColor comes in.  UIColor is able to convert to and from CGColor easily.
