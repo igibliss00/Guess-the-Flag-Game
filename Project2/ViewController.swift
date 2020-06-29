@@ -14,11 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var scoreDisplay: UILabel!
     @IBOutlet weak var level: UILabel!
+    @IBOutlet var highestScoreLabel: UILabel!
+    @IBOutlet var alert: UILabel!
     
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
     var numOfQuestionsAsked = 0
+    var highestScore: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,10 @@ class ViewController: UIViewController {
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
+        
+        let defaults = UserDefaults.standard
+        highestScoreLabel.text = String(defaults.integer(forKey: "highestScore"))
+        highestScore = defaults.integer(forKey: "highestScore")
         
         askQuestions()
     }
@@ -55,6 +62,12 @@ class ViewController: UIViewController {
             score -= 1
         }
         scoreDisplay.text = String(score)
+        if score > highestScore {
+            alert.text = "You set the record!"
+            highestScoreLabel.text = String(score)
+            let defaults = UserDefaults.standard
+            defaults.set(score, forKey: "highestScore")
+        }
         numOfQuestionsAsked += 1
         level.text = String(numOfQuestionsAsked)
         
