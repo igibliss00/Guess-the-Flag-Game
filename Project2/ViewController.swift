@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var correctAnswer = 0
     var numOfQuestionsAsked = 0
     var highestScore: Int = 0
+    var buttonAnimation: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            buttonAnimation = button1
+        case 1:
+            buttonAnimation = button2
+        case 2:
+            buttonAnimation = button3
+        default:
+            break
+        }
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+            self.buttonAnimation.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        }) { (_) in
+            UIView.animate(withDuration: 0.3) {
+                self.buttonAnimation.transform = CGAffineTransform.identity
+            }
+        }
+        
         if correctAnswer == sender.tag {
             title = "Correct!"
             score += 1
@@ -85,7 +105,6 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestions))
         }
         present(ac, animated: true)
-
     }
 }
 
